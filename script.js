@@ -1,122 +1,73 @@
 const robots = [
   {
-    name: "3ASY Bot",
+    name: "Red Light Green Light Robot",
     platform: "ev3",
     motors: 2,
     sensors: 1,
-    video: "https://www.youtube.com/embed/J7KJbs5sSEE"
+    video: "https://www.youtube.com/embed/DSsbGJMSnT8"
   },
   {
-    name: "football Robot",
+    name: "TicTacToe Playing Robot",
     platform: "ev3",
     motors: 3,
     sensors: 1,
-    video: "https://youtu.be/5jtiPpSScvI?si=1wvBylnlutJDvw6N"
+    video: "https://www.youtube.com/embed/aRFfXCBDIaE"
   },
   {
-    name: "Line Follower",
+    name: "Xdozer Transforming Robot",
+    platform: "ev3",
+    motors: 4,
+    sensors: 2,
+    video: "https://www.youtube.com/embed/Y_91vgpbsmY"
+  },
+  {
+    name: "EV3 Drawbot",
     platform: "ev3",
     motors: 2,
-    sensors: 2,
-    video: "https://www.youtube.com/embed/3EuQk_5YVuA"
-  },
-  {
-    name: "Gymnast",
-    platform: "spike",
-    motors: 2,
-    sensors: 2,
-    video: "https://www.youtube.com/embed/YwlWrEyGGso"
-  },
-  {
-    name: "Speedbot",
-    platform: "spike",
-    motors: 2,
-    sensors: 1,
-    video: "https://www.youtube.com/embed/kfBwBHTfzUM"
-  },
-  {
-    name: "Box Robot",
-    platform: "spike",
-    motors: 3,
-    sensors: 3,
-    video: "https://www.youtube.com/embed/QBqDkT-Emiw"
-  },
-  {
-    name: "Shooter Bot",
-    platform: "spike",
-    motors: 3,
-    sensors: 2,
-    video: "https://www.youtube.com/embed/Ez3N6vfgdgo"
-  },
-  {
-    name: "ping pong ball collector Robot",
-    platform: "ev3",
-    motors: 3,
-    sensors: 3,
-    video: "https://youtu.be/GrLvJvppM8M?si=0pqFGwBB_tzCs915"
-  },
-  {
-    name: "robot invader",
-    platform: "ev3",
-    motors: 3,
     sensors: 0,
-    video: "https://youtu.be/J2LNupdl9gs?si=jejA8o3076oaUIrg"
+    video: "https://www.youtube.com/embed/6xCd55oSgO4"
   },
   {
-    name: "Smart Car",
-    platform: "spike",
-    motors: 4,
-    sensors: 3,
-    video: "https://www.youtube.com/embed/O9s34Trw7PY"
-  },
-  {
-    name: "Drone Simulator",
-    platform: "spike",
-    motors: 4,
-    sensors: 4,
-    video: "https://www.youtube.com/embed/Uz3u4ybwao4"
-  },
-  {
-    name: "robot bowling",
+    name: "EV3 Rover Bot",
     platform: "ev3",
     motors: 3,
     sensors: 2,
-    video: "https://youtu.be/HlTr52KWb_E?si=DbFfGpK2WhLLw1sl"
+    video: "https://www.youtube.com/embed/b82TL2TUYiE"
   },
   {
-    name: "Turtle Bot",
+    name: "Soccer Robot",
+    platform: "spike",
+    motors: 3,
+    sensors: 1,
+    video: "https://www.youtube.com/embed/DlUfssziXDQ"
+  },
+  {
+    name: "Manipulator Arm",
+    platform: "spike",
+    motors: 2,
+    sensors: 2,
+    video: "https://www.youtube.com/embed/Rw_Q9j-lA78"
+  },
+  {
+    name: "Rubik's Cube Solver (Primecuber)",
+    platform: "spike",
+    motors: 3,
+    sensors: 1,
+    video: "https://www.youtube.com/embed/4PlHQtcdYII"
+  },
+  {
+    name: "Color Plotting Rover",
     platform: "spike",
     motors: 2,
     sensors: 1,
-    video: "https://www.youtube.com/embed/h0d5X1xBpcY"
+    video: "https://www.youtube.com/embed/GOkpHxyRYTg"
   },
   {
-    name: "robot loader",
-    platform: "ev3",
-    motors: 3,
-    sensors: 3,
-    video: "https://youtu.be/dfa4OLYecuU?si=2_jmkUW1H1qzN0wD"
-  },
-  {
-    name: "Maze Solver",
+    name: "Spike Prime Getting Started",
     platform: "spike",
-    motors: 3,
-    sensors: 2,
-    video: "https://www.youtube.com/embed/DLh_hg8tsz4"
-  },
-  {
-    name: "color detecting robot",
-    platform: "ev3",
     motors: 2,
-    sensors: 2,
-    video: "https://youtu.be/MRMxHoXJxmQ?si=Xp_G96-3hqsnYOFQ"
-  },
-  {
-    name: "Lift Arm",
-    platform: "spike",
-    motors: 3,
-    sensors: 3,
-    video: "https://www.youtube.com/embed/bZvN9SKMXlQ"
+    sensors: 1,
+    video: "https://www.youtube.com/embed/DtYW2kzejdY"
   }
 ];
 
