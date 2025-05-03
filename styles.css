@@ -1,0 +1,79 @@
+/* Основной стиль для сайта робототехники */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f9fc;
+  color: #333;
+}
+
+header {
+  background-color: #004080;
+  color: white;
+  padding: 1em 2em;
+  text-align: center;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 0 1em;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+main {
+  padding: 2em;
+  max-width: 800px;
+  margin: auto;
+}
+
+section {
+  margin-bottom: 3em;
+  background-color: white;
+  padding: 2em;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+form input, form select, form button {
+  display: block;
+  margin-top: 1em;
+  width: 100%;
+  padding: 0.5em;
+  font-size: 1em;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+form button {
+  background-color: #004080;
+  color: white;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #0066cc;
+}
+
+footer {
+  text-align: center;
+  padding: 1em;
+  background-color: #eee;
+  font-size: 0.9em;
+}
+
+#robotResults {
+  margin-top: 2em;
+  font-weight: bold;
+}
