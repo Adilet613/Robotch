@@ -85,12 +85,14 @@ form.addEventListener("submit", (e) => {
   const motors = parseInt(document.getElementById("motors").value);
   const sensors = parseInt(document.getElementById("sensors").value);
 
+  // Фильтрация роботов по платформе, моторам и датчикам
   const filtered = robots.filter(
     (r) => r.platform === platform && r.motors <= motors && r.sensors <= sensors
   );
 
   robotsContainer.innerHTML = "";
 
+  // Если подходящих роботов нет
   if (filtered.length === 0) {
     robotsContainer.innerHTML = "<p>❌ Подходящих роботов не найдено. Попробуй увеличить количество деталей.</p>";
   } else {
