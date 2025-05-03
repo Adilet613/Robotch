@@ -7,11 +7,11 @@ const robots = [
     video: "https://www.youtube.com/embed/J7KJbs5sSEE"
   },
   {
-    name: "Explorer Robot",
+    name: "football Robot",
     platform: "ev3",
     motors: 3,
-    sensors: 2,
-    video: "https://www.youtube.com/embed/R3VrLnrREGA"
+    sensors: 1,
+    video: "https://youtu.be/5jtiPpSScvI?si=1wvBylnlutJDvw6N"
   },
   {
     name: "Line Follower",
@@ -49,18 +49,18 @@ const robots = [
     video: "https://www.youtube.com/embed/Ez3N6vfgdgo"
   },
   {
-    name: "Arm Bot",
+    name: "ping pong ball collector Robot",
     platform: "ev3",
-    motors: 4,
+    motors: 3,
     sensors: 3,
-    video: "https://www.youtube.com/embed/KXtPA6yoA1k"
+    video: "https://youtu.be/GrLvJvppM8M?si=0pqFGwBB_tzCs915"
   },
   {
-    name: "Color Follower",
+    name: "robot invader",
     platform: "ev3",
-    motors: 2,
-    sensors: 2,
-    video: "https://www.youtube.com/embed/qNnkzvJlCQs"
+    motors: 3,
+    sensors: 0,
+    video: "https://youtu.be/J2LNupdl9gs?si=jejA8o3076oaUIrg"
   },
   {
     name: "Smart Car",
@@ -77,11 +77,11 @@ const robots = [
     video: "https://www.youtube.com/embed/Uz3u4ybwao4"
   },
   {
-    name: "Rover",
+    name: "robot bowling",
     platform: "ev3",
-    motors: 4,
-    sensors: 3,
-    video: "https://www.youtube.com/embed/WjLz3mfj8wE"
+    motors: 3,
+    sensors: 2,
+    video: "https://youtu.be/HlTr52KWb_E?si=DbFfGpK2WhLLw1sl"
   },
   {
     name: "Turtle Bot",
@@ -91,11 +91,11 @@ const robots = [
     video: "https://www.youtube.com/embed/h0d5X1xBpcY"
   },
   {
-    name: "Pick and Place",
+    name: "robot loader",
     platform: "ev3",
     motors: 3,
-    sensors: 2,
-    video: "https://www.youtube.com/embed/VlHZrOgFLwA"
+    sensors: 3,
+    video: "https://youtu.be/dfa4OLYecuU?si=2_jmkUW1H1qzN0wD"
   },
   {
     name: "Maze Solver",
@@ -105,11 +105,11 @@ const robots = [
     video: "https://www.youtube.com/embed/DLh_hg8tsz4"
   },
   {
-    name: "Stealth Bot",
+    name: "color detecting robot",
     platform: "ev3",
     motors: 2,
-    sensors: 3,
-    video: "https://www.youtube.com/embed/8qz1gGv0z4I"
+    sensors: 2,
+    video: "https://youtu.be/MRMxHoXJxmQ?si=Xp_G96-3hqsnYOFQ"
   },
   {
     name: "Lift Arm",
