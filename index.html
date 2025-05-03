@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description" content="Робототехника для всех. Укажи свои детали — получи инструкции!" />
+  <title>Робототехника Онлайн</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js" integrity="sha512-nmYtWkHWRz7q1yQSKYfMwrYc7XSGkG+AjLFipD4WxGR9B7t3r8Vnq91+HjNquDcb8N2Nv9koUEg2XW1d8z3zAw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+  <header>
+    <h1>Добро пожаловать в Мир Робототехники</h1>
+    <nav>
+      <ul>
+        <li><a href="#home">Главная</a></li>
+        <li><a href="#register">Регистрация</a></li>
+        <li><a href="#login">Вход</a></li>
+        <li><a href="#robots">Подобрать Робота</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home">
+      <h2>Создай робота по своим возможностям</h2>
+      <p>Укажи, какие у тебя есть детали LEGO и датчики — и мы подскажем, какие роботы ты можешь собрать. Видео-инструкции прилагаются!</p>
+    </section>
+
+    <section id="register">
+      <h2>Регистрация</h2>
+      <form id="registerForm">
+        <input type="text" id="regUsername" placeholder="Имя пользователя" required />
+        <input type="email" id="regEmail" placeholder="Email" required />
+        <input type="password" id="regPassword" placeholder="Пароль" required />
+        <button type="submit">Зарегистрироваться</button>
+      </form>
+      <p id="registerMsg"></p>
+    </section>
+
+    <section id="login">
+      <h2>Вход</h2>
+      <form id="loginForm">
+        <input type="email" id="loginEmail" placeholder="Email" required />
+        <input type="password" id="loginPassword" placeholder="Пароль" required />
+        <button type="submit">Войти</button>
+      </form>
+      <p id="loginMsg"></p>
+    </section>
+
+    <section id="robots">
+      <h2>Подбор робота</h2>
+      <form id="partsForm">
+        <label>Количество больших моторов: <input type="number" id="largeMotors" min="0" /></label>
+        <label>Количество средних моторов: <input type="number" id="mediumMotors" min="0" /></label>
+        <label>Датчики касания: <input type="number" id="touchSensors" min="0" /></label>
+        <label>Датчики цвета: <input type="number" id="colorSensors" min="0" /></label>
+        <label>Датчики расстояния: <input type="number" id="ultrasonicSensors" min="0" /></label>
+        <label>Мозг (EV3 или Spike): 
+          <select id="brainType">
+            <option value="ev3">EV3</option>
+            <option value="spike">Spike Prime</option>
+          </select>
+        </label>
+        <button type="submit">Найти роботов</button>
+      </form>
+      <div id="robotResults"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Робототехника Онлайн. Все права защищены.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
