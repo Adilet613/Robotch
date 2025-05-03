@@ -1,49 +1,66 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LEGO Роботы</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Создай робота с нуля по количеству деталей. Поддержка LEGO Spike Prime и EV3, видеоинструкции, участие в олимпиадах. Всё бесплатно и понятно!">
+  <meta name="keywords" content="LEGO Spike Prime, EV3, робототехника, роботы, инструкция, сборка, YouTube, начинающим, олимпиада, датчики, моторы">
+  <meta name="author" content="РобоПлатформа by OpenAI + Пользователь" />
+  <title>РобоПлатформа | Конструктор роботов по деталям</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3219/3219737.png" type="image/png">
 </head>
+
 <body>
   <header>
-    <h1>Конструктор LEGO Роботов</h1>
-    <nav>
-      <button id="toggleTheme">🌓 Тема</button>
-    </nav>
+    <h1>🤖 РобоПлатформа</h1>
+    <p>Узнай, какого робота ты можешь построить прямо сейчас!</p>
+    <button id="toggleTheme">🌙 Переключить тему</button>
   </header>
 
   <main>
-    <section class="form-section">
-      <h2>Введите количество ваших деталей:</h2>
+    <section class="input-section">
+      <h2>Введи свои параметры</h2>
       <form id="robotForm">
-        <label for="motors">Моторов:</label>
-        <input type="number" id="motors" name="motors" min="0" required />
-
-        <label for="sensors">Датчиков:</label>
-        <input type="number" id="sensors" name="sensors" min="0" required />
-
         <label for="platform">Платформа:</label>
-        <select id="platform" name="platform">
-          <option value="ev3">EV3</option>
-          <option value="spike">Spike Prime</option>
+        <select id="platform" required>
+          <option value="spike">LEGO Spike Prime</option>
+          <option value="ev3">LEGO Mindstorms EV3</option>
         </select>
 
-        <button type="submit">Показать доступные роботы</button>
+        <label for="motors">Количество моторов:</label>
+        <input type="number" id="motors" min="0" max="10" required />
+
+        <label for="sensors">Количество сенсоров:</label>
+        <input type="number" id="sensors" min="0" max="10" required />
+
+        <button type="submit">🔍 Найти роботов</button>
       </form>
     </section>
 
-    <section id="robotsList">
-      <h2>Подходящие роботы:</h2>
+    <section class="robots-section">
+      <h2>Роботы, которые ты можешь собрать:</h2>
       <div id="robotsContainer"></div>
+    </section>
+
+    <section class="about">
+      <h2>📌 О платформе</h2>
+      <p>
+        Эта платформа была создана, чтобы помочь каждому, у кого нет возможности покупать дорогие наборы LEGO, но есть огромное желание участвовать в олимпиадах и строить настоящих роботов. Просто укажи, сколько у тебя есть моторов и сенсоров — и ты сразу увидишь доступных роботов с <b>видеоинструкцией</b> с YouTube.
+      </p>
+      <p>
+        Все роботы были отобраны вручную. Видео проверены, и они точно работают.
+      </p>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 LEGO Роботы. Все права защищены.</p>
+    <p>© 2025 РобоПлатформа. Сделано с ❤️ специально для будущих инженеров.</p>
+    <p><a href="https://github.com/" target="_blank">Наш GitHub</a> | <a href="#">Обратная связь</a></p>
   </footer>
 
   <script src="script.js"></script>
 </body>
+
 </html>
