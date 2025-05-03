@@ -1,98 +1,168 @@
-// Обновлённая версия с ИИ-помощником, iframe, фильтром и сохранением темы
-const users = {}; // временно хранит данные пользователей (можно заменить на сервер в будущем)
+const robots = [
+  {
+    name: "3ASY Bot",
+    platform: "ev3",
+    motors: 2,
+    sensors: 1,
+    video: "https://www.youtube.com/embed/J7KJbs5sSEE"
+  },
+  {
+    name: "Explorer Robot",
+    platform: "ev3",
+    motors: 3,
+    sensors: 2,
+    video: "https://www.youtube.com/embed/R3VrLnrREGA"
+  },
+  {
+    name: "Line Follower",
+    platform: "ev3",
+    motors: 2,
+    sensors: 2,
+    video: "https://www.youtube.com/embed/3EuQk_5YVuA"
+  },
+  {
+    name: "Gymnast",
+    platform: "spike",
+    motors: 2,
+    sensors: 2,
+    video: "https://www.youtube.com/embed/YwlWrEyGGso"
+  },
+  {
+    name: "Speedbot",
+    platform: "spike",
+    motors: 2,
+    sensors: 1,
+    video: "https://www.youtube.com/embed/kfBwBHTfzUM"
+  },
+  {
+    name: "Box Robot",
+    platform: "spike",
+    motors: 3,
+    sensors: 3,
+    video: "https://www.youtube.com/embed/QBqDkT-Emiw"
+  },
+  {
+    name: "Shooter Bot",
+    platform: "spike",
+    motors: 3,
+    sensors: 2,
+    video: "https://www.youtube.com/embed/Ez3N6vfgdgo"
+  },
+  {
+    name: "Arm Bot",
+    platform: "ev3",
+    motors: 4,
+    sensors: 3,
+    video: "https://www.youtube.com/embed/KXtPA6yoA1k"
+  },
+  {
+    name: "Color Follower",
+    platform: "ev3",
+    motors: 2,
+    sensors: 2,
+    video: "https://www.youtube.com/embed/qNnkzvJlCQs"
+  },
+  {
+    name: "Smart Car",
+    platform: "spike",
+    motors: 4,
+    sensors: 3,
+    video: "https://www.youtube.com/embed/O9s34Trw7PY"
+  },
+  {
+    name: "Drone Simulator",
+    platform: "spike",
+    motors: 4,
+    sensors: 4,
+    video: "https://www.youtube.com/embed/Uz3u4ybwao4"
+  },
+  {
+    name: "Rover",
+    platform: "ev3",
+    motors: 4,
+    sensors: 3,
+    video: "https://www.youtube.com/embed/WjLz3mfj8wE"
+  },
+  {
+    name: "Turtle Bot",
+    platform: "spike",
+    motors: 2,
+    sensors: 1,
+    video: "https://www.youtube.com/embed/h0d5X1xBpcY"
+  },
+  {
+    name: "Pick and Place",
+    platform: "ev3",
+    motors: 3,
+    sensors: 2,
+    video: "https://www.youtube.com/embed/VlHZrOgFLwA"
+  },
+  {
+    name: "Maze Solver",
+    platform: "spike",
+    motors: 3,
+    sensors: 2,
+    video: "https://www.youtube.com/embed/DLh_hg8tsz4"
+  },
+  {
+    name: "Stealth Bot",
+    platform: "ev3",
+    motors: 2,
+    sensors: 3,
+    video: "https://www.youtube.com/embed/8qz1gGv0z4I"
+  },
+  {
+    name: "Lift Arm",
+    platform: "spike",
+    motors: 3,
+    sensors: 3,
+    video: "https://www.youtube.com/embed/bZvN9SKMXlQ"
+  }
+];
 
-// Сохраняем тему в localStorage
-const themeToggle = document.getElementById('toggleTheme');
-if (themeToggle) {
-  themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+const form = document.getElementById("robotForm");
+const container = document.getElementById("robotsContainer");
+const toggleThemeBtn = document.getElementById("toggleTheme");
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const motors = parseInt(document.getElementById("motors").value);
+  const sensors = parseInt(document.getElementById("sensors").value);
+  const platform = document.getElementById("platform").value;
+
+  const matched = robots.filter(robot =>
+    robot.motors <= motors &&
+    robot.sensors <= sensors &&
+    robot.platform === platform
+  );
+
+  container.innerHTML = "";
+
+  if (matched.length === 0) {
+    container.innerHTML = "<p class='no-match'>Роботы не найдены. Попробуйте изменить параметры.</p>";
+    return;
+  }
+
+  matched.forEach(robot => {
+    const card = document.createElement("div");
+    card.className = "robot-card";
+    card.innerHTML = `
+      <h3>${robot.name}</h3>
+      <iframe
+        width="320"
+        height="180"
+        src="${robot.video}"
+        title="${robot.name}"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    `;
+    container.appendChild(card);
   });
-  if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark-mode');
-  }
-}
-
-document.getElementById('registerForm').addEventListener('submit', async function (e) {
-  e.preventDefault();
-  const username = document.getElementById('regUsername').value.trim();
-  const email = document.getElementById('regEmail').value.trim();
-  const password = document.getElementById('regPassword').value;
-
-  if (users[email]) {
-    document.getElementById('registerMsg').textContent = 'Пользователь уже существует.';
-    return;
-  }
-
-  const hashedPassword = await bcrypt.hash(password, 10);
-  users[email] = { username, password: hashedPassword };
-  document.getElementById('registerMsg').textContent = 'Успешная регистрация!';
 });
 
-document.getElementById('loginForm').addEventListener('submit', async function (e) {
-  e.preventDefault();
-  const email = document.getElementById('loginEmail').value.trim();
-  const password = document.getElementById('loginPassword').value;
-  const user = users[email];
-
-  if (!user) {
-    document.getElementById('loginMsg').textContent = 'Пользователь не найден.';
-    return;
-  }
-
-  const isMatch = await bcrypt.compare(password, user.password);
-  if (isMatch) {
-    document.getElementById('loginMsg').textContent = `Добро пожаловать, ${user.username}!`;
-  } else {
-    document.getElementById('loginMsg').textContent = 'Неверный пароль.';
-  }
-});
-
-// ИИ-помощник: простой совет по выбору робота
-function getRobotHint(large, medium, color, touch, ultra) {
-  if (ultra > 0 && large + medium >= 3) return 'Совет: попробуй собрать марсохода или исследовательского дрона!';
-  if (color > 0 && medium >= 2) return 'Совет: попробуй цветовой сортировщик или робота-художника!';
-  if (large >= 2 && touch >= 1) return 'Совет: можно сделать робота для следования по линии или манипулятора.';
-  return 'Совет: добавь ещё деталей, чтобы открыть больше возможностей!';
-}
-
-document.getElementById('partsForm').addEventListener('submit', function (e) {
-  e.preventDefault();
-  const large = parseInt(document.getElementById('largeMotors').value || 0);
-  const medium = parseInt(document.getElementById('mediumMotors').value || 0);
-  const touch = parseInt(document.getElementById('touchSensors').value || 0);
-  const color = parseInt(document.getElementById('colorSensors').value || 0);
-  const ultra = parseInt(document.getElementById('ultrasonicSensors').value || 0);
-  const brain = document.getElementById('brainType').value;
-  const type = document.getElementById('robotType').value;
-
-  let results = 'Подходящие роботы:\n';
-
-  if (brain === 'ev3' && large >= 2 && touch >= 1 && (type === 'any' || type === 'соревновательные')) {
-    results += '- ЛинияСледователь EV3 (видео: https://www.youtube.com/embed/example1)\n';
-  }
-  if (brain === 'spike' && medium >= 2 && color >= 1 && (type === 'any' || type === 'обучающие')) {
-    results += '- Сортировщик по цвету Spike (видео: https://www.youtube.com/embed/example2)\n';
-  }
-  if (large + medium >= 3 && ultra >= 1 && (type === 'any' || type === 'исследовательские')) {
-    results += '- Умный марсоход (видео: https://www.youtube.com/embed/example3)\n';
-  }
-
-  const hint = getRobotHint(large, medium, color, touch, ultra);
-
-  if (results === 'Подходящие роботы:\n') {
-    results = 'К сожалению, роботов с такими параметрами пока нет.';
-  }
-
-  document.getElementById('robotResults').textContent = results + '\n' + hint;
-
-  // Пример iframe
-  const iframe = document.createElement('iframe');
-  iframe.width = '100%';
-  iframe.height = '315';
-  iframe.src = 'https://www.youtube.com/embed/example1';
-  iframe.title = 'Инструкция по роботу';
-  iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-  iframe.allowFullscreen = true;
-  document.getElementById('robotResults').appendChild(iframe);
+toggleThemeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark-theme");
 });
