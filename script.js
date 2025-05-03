@@ -1,119 +1,108 @@
+// Обновлённый скрипт с новыми фичами
 const robots = [
+  // Spike Prime
   {
-    name: "Red Light Green Light Robot",
+    name: "Spike Доставщик",
+    platform: "spike",
+    motors: 3,
+    sensors: 2,
+    video: "https://www.youtube.com/embed/0WFfVgnUDeE"
+  },
+  {
+    name: "Spike Лабиринт бот",
+    platform: "spike",
+    motors: 2,
+    sensors: 1,
+    video: "https://www.youtube.com/embed/8UJquRZ9IgI"
+  },
+  {
+    name: "Spike Роборука",
+    platform: "spike",
+    motors: 2,
+    sensors: 2,
+    video: "https://www.youtube.com/embed/kNIEOTpMy30"
+  },
+
+  // EV3
+  {
+    name: "EV3 Гусеничный",
     platform: "ev3",
     motors: 2,
     sensors: 1,
-    video: "https://www.youtube.com/embed/DSsbGJMSnT8"
+    video: "https://www.youtube.com/embed/vs_ZV2zwZp8"
   },
   {
-    name: "TicTacToe Playing Robot",
+    name: "EV3 Марсоход",
     platform: "ev3",
     motors: 3,
-    sensors: 1,
-    video: "https://www.youtube.com/embed/aRFfXCBDIaE"
-  },
-  {
-    name: "Xdozer Transforming Robot",
-    platform: "ev3",
-    motors: 4,
     sensors: 2,
-    video: "https://www.youtube.com/embed/Y_91vgpbsmY"
+    video: "https://www.youtube.com/embed/Aj1kZN9KAWw"
   },
   {
-    name: "EV3 Drawbot",
+    name: "EV3 Уборщик",
     platform: "ev3",
     motors: 2,
     sensors: 0,
-    video: "https://www.youtube.com/embed/6xCd55oSgO4"
+    video: "https://www.youtube.com/embed/AY8X_6jxz1k"
+  },
+
+  // Дополнительные
+  {
+    name: "Spike Танк",
+    platform: "spike",
+    motors: 4,
+    sensors: 2,
+    video: "https://www.youtube.com/embed/BDb4bQLwnCE"
   },
   {
-    name: "EV3 Rover Bot",
+    name: "EV3 Лифт",
     platform: "ev3",
     motors: 3,
-    sensors: 2,
-    video: "https://www.youtube.com/embed/b82TL2TUYiE"
-  },
-  {
-    name: "Soccer Robot",
-    platform: "spike",
-    motors: 3,
-    sensors: 1,
-    video: "https://www.youtube.com/embed/DlUfssziXDQ"
-  },
-  {
-    name: "Manipulator Arm",
-    platform: "spike",
-    motors: 2,
-    sensors: 2,
-    video: "https://www.youtube.com/embed/Rw_Q9j-lA78"
-  },
-  {
-    name: "Rubik's Cube Solver (Primecuber)",
-    platform: "spike",
-    motors: 3,
-    sensors: 1,
-    video: "https://www.youtube.com/embed/4PlHQtcdYII"
-  },
-  {
-    name: "Color Plotting Rover",
-    platform: "spike",
-    motors: 2,
-    sensors: 1,
-    video: "https://www.youtube.com/embed/GOkpHxyRYTg"
-  },
-  {
-    name: "Spike Prime Getting Started",
-    platform: "spike",
-    motors: 2,
-    sensors: 1,
-    video: "https://www.youtube.com/embed/DtYW2kzejdY"
+    sensors: 3,
+    video: "https://www.youtube.com/embed/oh5L4qz4Nbg"
   }
 ];
 
 const form = document.getElementById("robotForm");
-const container = document.getElementById("robotsContainer");
+const robotsContainer = document.getElementById("robotsContainer");
 const toggleThemeBtn = document.getElementById("toggleTheme");
 
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
+// Темная тема переключатель
+if (localStorage.getItem("dark-mode") === "true") {
+  document.body.classList.add("dark-mode");
+}
 
+if (toggleThemeBtn) {
+  toggleThemeBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode"));
+  });
+}
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const platform = document.getElementById("platform").value;
   const motors = parseInt(document.getElementById("motors").value);
   const sensors = parseInt(document.getElementById("sensors").value);
-  const platform = document.getElementById("platform").value;
 
-  const matched = robots.filter(robot =>
-    robot.motors <= motors &&
-    robot.sensors <= sensors &&
-    robot.platform === platform
+  const filtered = robots.filter(
+    (r) => r.platform === platform && r.motors <= motors && r.sensors <= sensors
   );
 
-  container.innerHTML = "";
+  robotsContainer.innerHTML = "";
 
-  if (matched.length === 0) {
-    container.innerHTML = "<p class='no-match'>Роботы не найдены. Попробуйте изменить параметры.</p>";
-    return;
+  if (filtered.length === 0) {
+    robotsContainer.innerHTML = "<p>❌ Подходящих роботов не найдено. Попробуй увеличить количество деталей.</p>";
+  } else {
+    filtered.forEach((robot) => {
+      const div = document.createElement("div");
+      div.className = "robot-card";
+      div.innerHTML = `
+        <h3>${robot.name}</h3>
+        <p>Моторов: ${robot.motors}, Сенсоров: ${robot.sensors}</p>
+        <iframe width="100%" height="200" src="${robot.video}" frameborder="0" allowfullscreen></iframe>
+      `;
+      robotsContainer.appendChild(div);
+    });
   }
-
-  matched.forEach(robot => {
-    const card = document.createElement("div");
-    card.className = "robot-card";
-    card.innerHTML = `
-      <h3>${robot.name}</h3>
-      <iframe
-        width="320"
-        height="180"
-        src="${robot.video}"
-        title="${robot.name}"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
-    `;
-    container.appendChild(card);
-  });
-});
-
-toggleThemeBtn.addEventListener("click", () => {
-  document.body.classList.toggle("dark-theme");
 });
