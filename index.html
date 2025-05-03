@@ -1,80 +1,121 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Роботы по деталям</title>
+  <title>LEGO Роботы</title>
   <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
 </head>
-
 <body>
   <header>
-    <h1>Выбери своего робота 🤖</h1>
-    <button id="toggleTheme">🌓 Тема</button>
+    <h1>Конструктор LEGO Роботов</h1>
+    <nav>
+      <button id="toggleTheme">🌓 Тема</button>
+    </nav>
   </header>
 
   <main>
-    <section class="auth">
-      <div>
-        <h2>Регистрация</h2>
-        <form id="registerForm">
-          <input type="text" id="regUsername" placeholder="Имя пользователя" required />
-          <input type="email" id="regEmail" placeholder="Email" required />
-          <input type="password" id="regPassword" placeholder="Пароль" required />
-          <button type="submit">Зарегистрироваться</button>
-        </form>
-        <p id="registerMsg"></p>
-      </div>
+    <section class="form-section">
+      <h2>Введите количество ваших деталей:</h2>
+      <form id="robotForm">
+        <label for="motors">Моторов:</label>
+        <input type="number" id="motors" name="motors" required />
 
-      <div>
-        <h2>Вход</h2>
-        <form id="loginForm">
-          <input type="email" id="loginEmail" placeholder="Email" required />
-          <input type="password" id="loginPassword" placeholder="Пароль" required />
-          <button type="submit">Войти</button>
-        </form>
-        <p id="loginMsg"></p>
-      </div>
+        <label for="sensors">Датчиков:</label>
+        <input type="number" id="sensors" name="sensors" required />
+
+        <label for="platform">Платформа:</label>
+        <select id="platform" name="platform">
+          <option value="ev3">EV3</option>
+          <option value="spike">Spike Prime</option>
+        </select>
+
+        <button type="submit">Показать доступные роботы</button>
+      </form>
     </section>
 
-    <section class="robot-form">
-      <h2>Укажи свои детали</h2>
-      <form id="partsForm">
-        <label>Больших моторов: <input type="number" id="largeMotors" min="0" /></label>
-        <label>Средних моторов: <input type="number" id="mediumMotors" min="0" /></label>
-        <label>Сенсоров касания: <input type="number" id="touchSensors" min="0" /></label>
-        <label>Сенсоров цвета: <input type="number" id="colorSensors" min="0" /></label>
-        <label>Ультразвуковых сенсоров: <input type="number" id="ultrasonicSensors" min="0" /></label>
-
-        <label>Контроллер:
-          <select id="brainType">
-            <option value="ev3">EV3</option>
-            <option value="spike">Spike Prime</option>
-          </select>
-        </label>
-
-        <label>Тип робота:
-          <select id="robotType">
-            <option value="any">Любой</option>
-            <option value="соревновательные">Соревновательные</option>
-            <option value="обучающие">Обучающие</option>
-            <option value="исследовательские">Исследовательские</option>
-          </select>
-        </label>
-
-        <button type="submit">Подобрать робота</button>
-      </form>
-      <pre id="robotResults"></pre>
+    <section id="robotsList">
+      <h2>Подходящие роботы:</h2>
+      <div id="robotsContainer"></div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Роботы для всех. Сделано с ❤️ и идеей.</p>
+    <p>&copy; 2025 LEGO Роботы. Все права защищены.</p>
   </footer>
 
-  <script src="script.js"></script>
-</body>
+  <script>
+    const robots = [
+      {
+        name: "3ASY Bot",
+        platform: "ev3",
+        motors: 2,
+        sensors: 1,
+        video: "https://www.youtube.com/embed/J7KJbs5sSEE"
+      },
+      {
+        name: "Explorer Robot",
+        platform: "ev3",
+        motors: 3,
+        sensors: 2,
+        video: "https://www.youtube.com/embed/R3VrLnrREGA"
+      },
+      {
+        name: "Gymnast",
+        platform: "spike",
+        motors: 2,
+        sensors: 2,
+        video: "https://www.youtube.com/embed/YwlWrEyGGso"
+      },
+      {
+        name: "Speedbot",
+        platform: "spike",
+        motors: 2,
+        sensors: 1,
+        video: "https://www.youtube.com/embed/kfBwBHTfzUM"
+      },
+      {
+        name: "Box Robot",
+        platform: "spike",
+        motors: 3,
+        sensors: 3,
+        video: "https://www.youtube.com/embed/QBqDkT-Emiw"
+      }
+    ];
 
+    document.getElementById("robotForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const motors = parseInt(document.getElementById("motors").value);
+      const sensors = parseInt(document.getElementById("sensors").value);
+      const platform = document.getElementById("platform").value;
+
+      const container = document.getElementById("robotsContainer");
+      container.innerHTML = "";
+
+      const matched = robots.filter(r =>
+        r.motors <= motors &&
+        r.sensors <= sensors &&
+        r.platform === platform
+      );
+
+      if (matched.length === 0) {
+        container.innerHTML = "<p>Роботы не найдены. Попробуйте изменить параметры.</p>";
+      } else {
+        matched.forEach(r => {
+          const div = document.createElement("div");
+          div.className = "robot-card";
+          div.innerHTML = `
+            <h3>${r.name}</h3>
+            <iframe width="300" height="200" src="${r.video}" title="${r.name}" frameborder="0" allowfullscreen></iframe>
+          `;
+          container.appendChild(div);
+        });
+      }
+    });
+
+    document.getElementById("toggleTheme").addEventListener("click", () => {
+      document.body.classList.toggle("dark-theme");
+    });
+  </script>
+</body>
 </html>
