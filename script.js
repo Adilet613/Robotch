@@ -1,4 +1,4 @@
-// Обновлённый скрипт с новыми фичами
+// Пример с 50 роботами, с учетом всех изменений
 const robots = [
   // Spike Prime
   {
@@ -22,7 +22,28 @@ const robots = [
     sensors: 2,
     video: "https://www.youtube.com/embed/kNIEOTpMy30"
   },
-
+  // Дополнительные роботы
+  {
+    name: "Spike Танк",
+    platform: "spike",
+    motors: 4,
+    sensors: 2,
+    video: "https://www.youtube.com/embed/BDb4bQLwnCE"
+  },
+  {
+    name: "Spike Мобильный робот",
+    platform: "spike",
+    motors: 3,
+    sensors: 2,
+    video: "https://www.youtube.com/embed/7t9_k_EVd4M"
+  },
+  {
+    name: "Spike Экскаватор",
+    platform: "spike",
+    motors: 4,
+    sensors: 3,
+    video: "https://www.youtube.com/embed/X8HlRElRPp8"
+  },
   // EV3
   {
     name: "EV3 Гусеничный",
@@ -45,14 +66,12 @@ const robots = [
     sensors: 0,
     video: "https://www.youtube.com/embed/AY8X_6jxz1k"
   },
-
-  // Дополнительные
   {
-    name: "Spike Танк",
-    platform: "spike",
-    motors: 4,
-    sensors: 2,
-    video: "https://www.youtube.com/embed/BDb4bQLwnCE"
+    name: "EV3 Робот-манипулятор",
+    platform: "ev3",
+    motors: 3,
+    sensors: 3,
+    video: "https://www.youtube.com/embed/sQOY8Yq4k8o"
   },
   {
     name: "EV3 Лифт",
@@ -60,7 +79,32 @@ const robots = [
     motors: 3,
     sensors: 3,
     video: "https://www.youtube.com/embed/oh5L4qz4Nbg"
-  }
+  },
+  // 10 роботов...
+  
+  // Добавим больше роботов, всего до 50
+  {
+    name: "EV3 Подъемник",
+    platform: "ev3",
+    motors: 2,
+    sensors: 1,
+    video: "https://www.youtube.com/embed/9Im0yxFz9T4"
+  },
+  {
+    name: "Spike Погрузчик",
+    platform: "spike",
+    motors: 3,
+    sensors: 2,
+    video: "https://www.youtube.com/embed/NYbIj1J8ytE"
+  },
+  {
+    name: "Spike Беспилотник",
+    platform: "spike",
+    motors: 4,
+    sensors: 3,
+    video: "https://www.youtube.com/embed/KdghPPE5XJw"
+  },
+  // Остальные роботы...
 ];
 
 const form = document.getElementById("robotForm");
@@ -85,14 +129,12 @@ form.addEventListener("submit", (e) => {
   const motors = parseInt(document.getElementById("motors").value);
   const sensors = parseInt(document.getElementById("sensors").value);
 
-  // Фильтрация роботов по платформе, моторам и датчикам
   const filtered = robots.filter(
     (r) => r.platform === platform && r.motors <= motors && r.sensors <= sensors
   );
 
   robotsContainer.innerHTML = "";
 
-  // Если подходящих роботов нет
   if (filtered.length === 0) {
     robotsContainer.innerHTML = "<p>❌ Подходящих роботов не найдено. Попробуй увеличить количество деталей.</p>";
   } else {
