@@ -1,134 +1,56 @@
-/* Базовый красивый стиль с современным видом */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f3f7fa;
-  color: #333;
+  font-family: sans-serif;
   margin: 0;
   padding: 0;
-  line-height: 1.6;
+  background-color: #f5f5f5;
+  color: #333;
 }
 
 header {
-  background: linear-gradient(to right, #1d3557, #457b9d);
+  background-color: #4a90e2;
   color: white;
-  padding: 20px 0;
+  padding: 1rem;
   text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-header h1 {
-  margin: 0;
-  font-size: 2rem;
-}
-
-.container {
-  padding: 20px;
-  max-width: 900px;
-  margin: auto;
 }
 
 form {
-  background-color: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: auto;
+  gap: 10px;
 }
 
-form label {
-  display: block;
-  margin: 10px 0 5px;
-  font-weight: bold;
-}
-
-form select,
-form input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  font-size: 1rem;
-}
-
-form button {
-  background-color: #1d3557;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
-  border-radius: 8px;
-  margin-top: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-form button:hover {
-  background-color: #457b9d;
-}
-
-#robotsContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+section {
+  padding: 1rem;
 }
 
 .robot-card {
   background-color: white;
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
-}
-
-.robot-card:hover {
-  transform: scale(1.02);
-}
-
-.robot-card iframe {
-  width: 100%;
-  height: 200px;
-  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem auto;
+  border-radius: 10px;
+  max-width: 600px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .dark-mode {
-  background-color: #1a1a1a;
-  color: #f0f0f0;
-}
-
-.dark-mode header {
-  background: linear-gradient(to right, #000000, #2c2c2c);
-}
-
-.dark-mode form,
-.dark-mode .robot-card {
-  background-color: #2c2c2c;
-  color: #fff;
-  box-shadow: 0 2px 6px rgba(255,255,255,0.05);
-}
-
-.dark-mode input,
-.dark-mode select {
-  background-color: #3a3a3a;
+  background-color: #121212;
   color: white;
-  border: 1px solid #555;
 }
 
-#toggleTheme {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #1d3557;
+.dark-mode .robot-card {
+  background-color: #1e1e1e;
+}
+
+button {
+  background-color: #4a90e2;
   color: white;
   border: none;
-  padding: 10px;
-  border-radius: 50%;
-  font-size: 1.2rem;
+  padding: 0.5rem;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  transition: background-color 0.3s ease;
 }
 
-#toggleTheme:hover {
-  background-color: #457b9d;
+button:hover {
+  background-color: #357ABD;
 }
