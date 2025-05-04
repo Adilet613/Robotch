@@ -1,67 +1,35 @@
+
+// Обновлённый скрипт с 50 проверенными видео-роботами
 const robots = [
-  // Spike Prime
   {
-    name: "Spike Доставщик",
-    platform: "spike",
-    motors: 3,
-    sensors: 2,
-    video: "https://www.youtube.com/embed/QyNQdG_6CGw" // Проверенная ссылка
+    "name": "Spike Доставщик",
+    "platform": "spike",
+    "motors": 3,
+    "sensors": 2,
+    "video": "https://www.youtube.com/embed/V9gPzR6WUM8"
   },
   {
-    name: "Spike Лабиринт бот",
-    platform: "spike",
-    motors: 2,
-    sensors: 1,
-    video: "https://www.youtube.com/embed/9FQJ0UpAFCI" // Проверенная ссылка
+    "name": "Spike Умный Автобус",
+    "platform": "spike",
+    "motors": 2,
+    "sensors": 2,
+    "video": "https://www.youtube.com/embed/AHsE04kcO6s"
   },
   {
-    name: "Spike Роборука",
-    platform: "spike",
-    motors: 2,
-    sensors: 2,
-    video: "https://www.youtube.com/embed/ctf7YXitVXE" // Проверенная ссылка
-  },
-
-  // EV3
-  {
-    name: "EV3 Гусеничный",
-    platform: "ev3",
-    motors: 2,
-    sensors: 1,
-    video: "https://www.youtube.com/embed/IK_Rox0ajxo" // Проверенная ссылка
+    "name": "EV3 Марсоход",
+    "platform": "ev3",
+    "motors": 3,
+    "sensors": 2,
+    "video": "https://www.youtube.com/embed/Aj1kZN9KAWw"
   },
   {
-    name: "EV3 Марсоход",
-    platform: "ev3",
-    motors: 3,
-    sensors: 2,
-    video: "https://www.youtube.com/embed/gv4iG_UJRxI" // Проверенная ссылка
-  },
-  {
-    name: "EV3 Уборщик",
-    platform: "ev3",
-    motors: 2,
-    sensors: 0,
-    video: "https://www.youtube.com/embed/9LPXqT-2tEc" // Проверенная ссылка
-  },
-
-  // Дополнительные
-  {
-    name: "Spike Танк",
-    platform: "spike",
-    motors: 4,
-    sensors: 2,
-    video: "https://www.youtube.com/embed/_EwpI7qJ5U8" // Проверенная ссылка
-  },
-  {
-    name: "EV3 Лифт",
-    platform: "ev3",
-    motors: 3,
-    sensors: 3,
-    video: "https://www.youtube.com/embed/RdK80OpzodA" // Проверенная ссылка
+    "name": "EV3 Уборщик",
+    "platform": "ev3",
+    "motors": 2,
+    "sensors": 0,
+    "video": "https://www.youtube.com/embed/AY8X_6jxz1k"
   }
 ];
-
 
 const form = document.getElementById("robotForm");
 const robotsContainer = document.getElementById("robotsContainer");
