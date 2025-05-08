@@ -1,56 +1,77 @@
 body {
-  font-family: sans-serif;
   margin: 0;
-  padding: 0;
-  background-color: #f5f5f5;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f2f2f2;
   color: #333;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 header {
-  background-color: #4a90e2;
+  background-color: #1976d2;
   color: white;
-  padding: 1rem;
+  padding: 20px;
   text-align: center;
+}
+
+nav {
+  margin-top: 10px;
+}
+
+main {
+  padding: 20px;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  max-width: 400px;
-  margin: auto;
   gap: 10px;
 }
 
-section {
-  padding: 1rem;
+input, select, button {
+  padding: 10px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #145ca3;
 }
 
 .robot-card {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
   background-color: white;
-  padding: 1rem;
-  margin: 1rem auto;
-  border-radius: 10px;
-  max-width: 600px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #1976d2;
+  color: white;
+  margin-top: 40px;
 }
 
 .dark-mode {
   background-color: #121212;
-  color: white;
+  color: #f0f0f0;
+}
+
+.dark-mode header,
+.dark-mode footer {
+  background-color: #1f1f1f;
 }
 
 .dark-mode .robot-card {
   background-color: #1e1e1e;
-}
-
-button {
-  background-color: #4a90e2;
-  color: white;
-  border: none;
-  padding: 0.5rem;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #357ABD;
+  border-color: #333;
 }
